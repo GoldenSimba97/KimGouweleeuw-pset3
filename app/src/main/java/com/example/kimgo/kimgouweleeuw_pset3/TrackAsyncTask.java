@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 
 public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
-    Context context;
-    MainActivity mainAct;
+    private Context context;
+    private MainActivity mainAct;
 
     public TrackAsyncTask(MainActivity main) {
         this.mainAct = main;
@@ -39,6 +39,7 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
         ArrayList<String> list = new ArrayList<String>();
 
         try {
+            Toast.makeText(context, "HELOO", Toast.LENGTH_SHORT).show();
             JSONObject trackStreamObj = new JSONObject(result);
             JSONObject resultObj = trackStreamObj.getJSONObject("results");
             JSONObject trackMatchesObj = resultObj.getJSONObject("trackmatches");

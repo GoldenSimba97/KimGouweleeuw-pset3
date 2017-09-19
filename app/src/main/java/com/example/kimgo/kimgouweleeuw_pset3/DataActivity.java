@@ -24,6 +24,8 @@ public class DataActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         trackArray = (ArrayList<String>) extras.getSerializable("data");
 
+//        trackArray = (ArrayList<String>) getIntent().getExtras().getSerializable("data");
+
         makeTrackAdapter();
     }
 

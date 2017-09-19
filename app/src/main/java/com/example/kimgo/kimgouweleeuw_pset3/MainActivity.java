@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -57,8 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void trackStartIntent(ArrayList<String> trackData) {
         Intent dataIntent = new Intent(this, DataActivity.class);
-        dataIntent.putExtra("data", trackData);
-        this.startActivity(dataIntent);
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("data", trackData);
+        dataIntent.putExtras(bundle);
+
+//        dataIntent.putExtra("data", trackData);
+        startActivity(dataIntent);
     }
 
 //    public void saveToSharedPrefs(View view) {
