@@ -1,7 +1,11 @@
 package com.example.kimgo.kimgouweleeuw_pset3;
 
+import android.app.ListActivity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +31,24 @@ public class DataActivity extends AppCompatActivity {
 //        tvResult.setText(trackArray.toString());
 
         makeTrackAdapter();
+
+        // listening to single list item on click
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // selected item
+                String track = ((TextView) view).getText().toString();
+
+                // Launching new Activity on selecting single List Item
+                Intent intent = new Intent(getApplicationContext(), InformationActivity.class);
+                // sending data to new activity
+                intent.putExtra("track", track);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     public void makeTrackAdapter() {

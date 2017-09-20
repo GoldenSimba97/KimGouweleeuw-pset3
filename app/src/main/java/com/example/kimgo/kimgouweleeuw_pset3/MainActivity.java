@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         editTrack = (EditText) findViewById(R.id.editTrack);
         assert editTrack != null;
         editTrack.setHint("Search for a track");
+
+//        findViewById(R.id.button2).setOnClickListener(new trackSearch());
     }
 
     public void trackSearch(View view) {
@@ -36,10 +38,41 @@ public class MainActivity extends AppCompatActivity {
         editTrack.getText().clear();
     }
 
+//    public class trackSearch implements View.OnClickListener {
+//        @Override public void onClick(View view) {
+//            String trackSearch = editTrack.getText().toString();
+//            TrackAsyncTask asyncTask = new TrackAsyncTask(this);
+//            asyncTask.execute(trackSearch);
+//
+//            editTrack.getText().clear();
+//        }
+//    }
+
     public void trackStartIntent(ArrayList<String> trackData) {
         Log.d("hallo", "hallo2");
         Intent dataIntent = new Intent(this, DataActivity.class);
         dataIntent.putExtra("data", trackData);
         this.startActivity(dataIntent);
     }
+
+//    public void saveToSharedPrefs(View view) {
+//        String editTextValue = editTrack.getText().toString();
+//
+//        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = prefs.edit();
+//
+//        editor.putString("editTrack", editTextValue);
+//        editor.commit();
+//    }
+//
+//    public void loadFromSharedPrefs() {
+//        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+//
+//        String editTextValueRestored = prefs.getString("editTrack", null);
+//
+//        if (editTextValueRestored != null) {
+//            editTrack.setText(editTextValueRestored);
+//        }
+//    }
+
 }

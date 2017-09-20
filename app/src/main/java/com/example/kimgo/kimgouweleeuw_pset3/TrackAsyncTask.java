@@ -38,9 +38,6 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         ArrayList<String> list = new ArrayList<>();
-//        list.add("halo");
-        Log.d("length", list.toString());
-        Log.d("length3", "hoi" + result);
 
         try {
             JSONObject trackStreamObj = new JSONObject(result);
@@ -48,16 +45,13 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
             Log.d("length2", resultObj.toString());
             JSONObject trackMatchesObj = resultObj.getJSONObject("trackmatches");
             JSONArray trackObj = trackMatchesObj.getJSONArray("track");
-//            Integer len = trackObj.length();
-//            String num = len.toString();
-//            lala(num);
 //            Log.d("length", num);
             for (int i = 0; i < trackObj.length(); ++i) {
                 JSONObject track = trackObj.getJSONObject(i);
                 String name = track.getString("name");
                 String artist = track.getString("artist");
-                list.add(name);
-                list.add(artist);
+                list.add(name + " - " + artist);
+//                list.add(artist);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -65,7 +59,4 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
         this.mainAct.trackStartIntent(list);
     }
 
-//    public void lala(String num) {
-//        Log.d("length", num);
-//    }
 }
