@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTrack = (EditText) findViewById(R.id.editTrack);
         assert editTrack != null;
-        editTrack.setHint("Search for a track");
+        editTrack.setHint("Search");
 
 //        findViewById(R.id.button2).setOnClickListener(new trackSearch());
     }
