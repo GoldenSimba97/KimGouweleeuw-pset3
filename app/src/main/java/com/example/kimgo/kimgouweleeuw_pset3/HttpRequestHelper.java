@@ -1,5 +1,7 @@
 package com.example.kimgo.kimgouweleeuw_pset3;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,12 +19,17 @@ public class HttpRequestHelper {
         String result = "";
         String chosenTag = params[0];
 
+//        Log.d("tag", chosenTag);
+
         URL url = null;
         try {
-            url = new URL("http://ws.audioscrobbler.com/2.0/?" + "method=" + "track.search" + "&track=" + chosenTag + "&apiKey=" + "3f730f7100c7cbfef7e1b9145c6c6ccb" + "&format=json");
+            url = new URL("http://ws.audioscrobbler.com/2.0/?" + "method=" + "track.search" + "&track=" + chosenTag + "&api_key=" + "3f730f7100c7cbfef7e1b9145c6c6ccb" + "&format=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        assert url != null;
+        Log.d("url", url.toString());
 
         HttpURLConnection connect;
 
@@ -40,7 +47,7 @@ public class HttpRequestHelper {
                         result += line;
                     }
                 }
-            } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

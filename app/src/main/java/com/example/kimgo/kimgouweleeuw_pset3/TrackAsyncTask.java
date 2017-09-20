@@ -2,6 +2,7 @@ package com.example.kimgo.kimgouweleeuw_pset3;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
  */
 
 public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
-    private Context context;
-    private MainActivity mainAct;
+    Context context;
+    MainActivity mainAct;
 
     public TrackAsyncTask(MainActivity main) {
         this.mainAct = main;
@@ -36,14 +37,21 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
+//        list.add("halo");
+        Log.d("length", list.toString());
+        Log.d("length3", "hoi" + result);
 
         try {
-            Toast.makeText(context, "HELOO", Toast.LENGTH_SHORT).show();
             JSONObject trackStreamObj = new JSONObject(result);
             JSONObject resultObj = trackStreamObj.getJSONObject("results");
+            Log.d("length2", resultObj.toString());
             JSONObject trackMatchesObj = resultObj.getJSONObject("trackmatches");
             JSONArray trackObj = trackMatchesObj.getJSONArray("track");
+//            Integer len = trackObj.length();
+//            String num = len.toString();
+//            lala(num);
+//            Log.d("length", num);
             for (int i = 0; i < trackObj.length(); ++i) {
                 JSONObject track = trackObj.getJSONObject(i);
                 String name = track.getString("name");
@@ -56,4 +64,8 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
         }
         this.mainAct.trackStartIntent(list);
     }
+
+//    public void lala(String num) {
+//        Log.d("length", num);
+//    }
 }

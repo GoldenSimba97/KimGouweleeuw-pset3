@@ -24,16 +24,17 @@ public class DataActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         trackArray = (ArrayList<String>) extras.getSerializable("data");
 
-//        trackArray = (ArrayList<String>) getIntent().getExtras().getSerializable("data");
+//        tvResult.setText(trackArray.toString());
 
         makeTrackAdapter();
     }
 
     public void makeTrackAdapter() {
         ArrayAdapter arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1,trackArray);
+                (this, android.R.layout.simple_list_item_1, trackArray);
         lvItems = (ListView) findViewById(R.id.listViewID);
         assert lvItems != null;
         lvItems.setAdapter(arrayAdapter);
     }
 }
+
