@@ -9,38 +9,38 @@
     tools:context="com.example.kimgo.kimgouweleeuw_pset3.InformationActivity">
 
     <TextView
-        android:id="@+id/trackView"
+        android:id="@+id/track"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="" />
 
-    <TextView
-        android:id="@+id/artistView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+    <!--<TextView-->
+        <!--android:id="@+id/a2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="" />-->
 
-    <TextView
-        android:id="@+id/albumView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+    <!--<TextView-->
+        <!--android:id="@+id/a3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="" />-->
 
-    <TextView
-        android:id="@+id/genresView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+    <!--<TextView-->
+        <!--android:id="@+id/a4"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="" />-->
 
-    <TextView
-        android:id="@+id/summaryView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+    <!--<TextView-->
+        <!--android:id="@+id/summaryView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="" />-->
 
     <Button
         android:id="@+id/addToList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/list" />
 </LinearLayout>

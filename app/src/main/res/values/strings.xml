@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">KimGouweleeuw-pset3</string>
+    <string name="search">Search</string>
+    <string name="list">Listen List</string>
+    <string name="add">Add to Listen List</string>
+    <string name="searchmore">Search for more tracks</string>
+    <string name="results">Search results</string>
+    <string name="delete">Do you want to delete the track: %1$s?</string>
+    <string name="deleting">Delete this track</string>
 </resources>

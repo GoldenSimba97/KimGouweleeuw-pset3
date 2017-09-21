@@ -8,6 +8,12 @@
     android:orientation="vertical"
     tools:context="com.example.kimgo.kimgouweleeuw_pset3.ListActivity">
 
+    <Button
+        android:id="@+id/searchmore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/searchmore" />
+
     <ListView
         android:id="@+id/listViewID"
         android:layout_width="match_parent"

@@ -1,12 +1,16 @@
 package com.example.kimgo.kimgouweleeuw_pset3;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,23 +18,48 @@ import java.util.Set;
 
 public class ListActivity extends AppCompatActivity {
     ListView lvItems;
-    ArrayList<String> listenArray;
+    ArrayList<String> listenArray = new ArrayList<>();
+    String track;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        loadFromSharedPrefs();
+
         lvItems = (ListView) findViewById(R.id.listViewID);
 
         Bundle extras = getIntent().getExtras();
-        listenArray = (ArrayList<String>) extras.getSerializable("listen");
+        track = (String) extras.getSerializable("listen");
+
+        if (track != "Main") {
+            listenArray.add(track);
+        }
+
+
+        Log.d("array", listenArray.toString());
 
 //        saveToSharedPrefs();
-        loadFromSharedPrefs();
-
 
         makeTrackAdapter2();
+
+        findViewById(R.id.searchmore).setOnClickListener(new backToMain());
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                String track = ((TextView) view).getText().toString();
+
+                Intent intent = new Intent(view.getContext(), DeleteActivity.class);
+                intent.putExtra("delete", track);
+                startActivity(intent);
+                finish();
+
+
+            }
+        });
 
 
     }
@@ -78,6 +107,15 @@ public class ListActivity extends AppCompatActivity {
             lvItems = (ListView) findViewById(R.id.listViewID);
             assert lvItems != null;
             lvItems.setAdapter(arrayAdapter);
+        }
+    }
+
+    public class backToMain implements View.OnClickListener {
+        @Override public void onClick(View view) {
+            Intent intent = new Intent(view.getContext(), MainActivity.class);
+//            intent.putExtra("listen", track);
+            startActivity(intent);
+            finish();
         }
     }
 }

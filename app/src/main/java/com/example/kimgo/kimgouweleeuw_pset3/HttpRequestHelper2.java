@@ -21,7 +21,9 @@ public class HttpRequestHelper2 {
 //        chosenTag.replaceAll("\\s+","");
         String[] split = chosenTag.split(" - ");
         String track = split[0];
+        track = track.replaceAll("[^A-Za-z]+", "%20");
         String artist = split[1];
+        artist = artist.replaceAll("[^A-Za-z]+", "%20");
 
         Log.d("tag", artist);
 

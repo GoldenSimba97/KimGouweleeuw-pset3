@@ -49,9 +49,11 @@ public class TrackAsyncTask2 extends AsyncTask<String, Integer, String> {
             JSONObject artistObj = trackObj.getJSONObject("artist");
             String artist = artistObj.getString("name");
 
-            JSONObject albumObj = trackObj.getJSONObject("album");
-            String albumTitle = albumObj.getString("title");
-            Log.d("hello", albumTitle);
+            list.add(name + " - " + artist);
+            list.add("Track name: " + name);
+            list.add("Artist: " + artist);
+
+            Log.d("hoi", "hoi");
             JSONObject toptagsObj = trackObj.getJSONObject("toptags");
             JSONArray tagsObj = toptagsObj.getJSONArray("tag");
             Integer len = tagsObj.length();
@@ -67,16 +69,20 @@ public class TrackAsyncTask2 extends AsyncTask<String, Integer, String> {
                 }
             }
             String genres = string.toString();
+            list.add("Genres: " + genres);
 
-            JSONObject wikiObj = trackObj.getJSONObject("wiki");
-            String summary = wikiObj.getString("summary");
+            JSONObject albumObj = trackObj.getJSONObject("album");
+            if (albumObj.length() != 0) {
+                String albumTitle = albumObj.getString("title");
+                Log.d("hello", albumTitle);
+                list.add("Album " + albumTitle);
+            }
 
-            list.add(name + " - " + artist);
-            list.add(name);
-            list.add(artist);
-            list.add(albumTitle);
-            list.add(genres);
-            list.add(summary);
+//            JSONObject wikiObj = trackObj.getJSONObject("wiki");
+//            if (wikiObj.length() != 0) {
+//                String summary = wikiObj.getString("summary");
+//                list.add(summary);
+//            }
         } catch (JSONException e1) {
             e1.printStackTrace();
             Log.d("dead", "dead");

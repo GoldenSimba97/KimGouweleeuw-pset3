@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     public class goToListenList implements View.OnClickListener {
         @Override public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), ListActivity.class);
-            intent.putExtra("listen", listenArray);
+            intent.putExtra("listen", "Main");
             startActivity(intent);
             finish();
         }

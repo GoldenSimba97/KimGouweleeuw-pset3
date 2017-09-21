@@ -18,6 +18,7 @@ public class HttpRequestHelper {
     protected static synchronized String downloadFromServer(String... params) {
         String result = "";
         String chosenTag = params[0];
+//        chosenTag = chosenTag.replaceAll("[^A-Za-z]+", "");
 
 //        Log.d("tag", chosenTag);
 
