@@ -19,6 +19,7 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
     EditText editTrack;
     MainActivity mainAct;
+    ArrayList<String> listenArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
         editTrack.setHint("Search");
 
         findViewById(R.id.search).setOnClickListener(new trackSearch());
+
+        if (listenArray != null) {
+            loadFromSharedPrefs();
+        }
         findViewById(R.id.goToListen).setOnClickListener(new goToListenList());
+
+
     }
 
 //    public void trackSearch(View view) {
@@ -69,27 +76,26 @@ public class MainActivity extends AppCompatActivity {
 //        editor.commit();
 //    }
 //
-//    public void loadFromSharedPrefs() {
-//        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
-//        Set<String> set = prefs.getStringSet("listenlist", null);
-//
-//
-//
+    public void loadFromSharedPrefs() {
+        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet("listenlist", null);
+        assert set != null;
+        listenArray = new ArrayList<>(set);
+
 //        String editTextValueRestored = prefs.getString("editTrack", null);
-//
-//        if (editTextValueRestored != null) {
+
+//        if (list != null) {
 //            editTrack.setText(editTextValueRestored);
 //        }
-//    }
-//
-//    public class goToListenList implements View.OnClickListener {
-//        @Override public void onClick(View view) {
-//
-//            Intent intent = new Intent(view.getContext(), ListActivity.class);
-//            intent.putExtra("listen", listenArray);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
+    }
+
+    public class goToListenList implements View.OnClickListener {
+        @Override public void onClick(View view) {
+            Intent intent = new Intent(view.getContext(), ListActivity.class);
+            intent.putExtra("listen", listenArray);
+            startActivity(intent);
+            finish();
+        }
+    }
 
 }
