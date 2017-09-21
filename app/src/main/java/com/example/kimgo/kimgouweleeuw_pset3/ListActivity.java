@@ -51,8 +51,6 @@ public class ListActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     @Override
