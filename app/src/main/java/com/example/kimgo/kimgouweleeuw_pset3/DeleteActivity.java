@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,7 +41,11 @@ public class DeleteActivity extends AppCompatActivity {
         @Override public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), ListActivity.class);
             listenArray.remove(track);
-            intent.putExtra("listen", listenArray);
+//            listenArray.remove("Delete");
+//            listenArray.remove("Main");
+            saveToSharedPrefs();
+            Log.d("delete", listenArray.toString());
+            intent.putExtra("listen", "Delete");
             startActivity(intent);
             finish();
         }

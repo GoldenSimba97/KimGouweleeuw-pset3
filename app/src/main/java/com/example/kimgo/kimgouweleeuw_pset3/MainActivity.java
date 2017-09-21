@@ -52,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
     public class trackSearch implements View.OnClickListener {
         @Override public void onClick(View view) {
             String trackSearch = editTrack.getText().toString();
-            TrackAsyncTask asyncTask = new TrackAsyncTask(mainAct);
-            asyncTask.execute(trackSearch);
+            if (!trackSearch.isEmpty()) {
+                TrackAsyncTask asyncTask = new TrackAsyncTask(mainAct);
+                asyncTask.execute(trackSearch);
 
-            editTrack.getText().clear();
+                editTrack.getText().clear();
+            }
         }
     }
 

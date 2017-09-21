@@ -33,9 +33,14 @@ public class ListActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         track = (String) extras.getSerializable("listen");
 
-        if (track != "Main") {
+//        Bundle extras2 = getIntent().getExtras();
+//        listenArray = (ArrayList<String>) extras2.getSerializable("tracks");
+
+        assert track != null;
+        if (!track.equals("Main") && !track.equals("Delete")) {
             listenArray.add(track);
         }
+
 
 
         Log.d("array", listenArray.toString());
