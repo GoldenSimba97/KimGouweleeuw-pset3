@@ -34,7 +34,6 @@ public class DataActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 String track = ((TextView) view).getText().toString();
-
                 TrackAsyncTask2 asyncTask = new TrackAsyncTask2(dataAct);
                 asyncTask.execute(track);
             }
