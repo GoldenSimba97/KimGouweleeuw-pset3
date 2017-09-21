@@ -22,7 +22,7 @@ public class HttpRequestHelper2 {
         String track = split[0];
         String artist = split[1];
 
-//        Log.d("tag", chosenTag);
+        Log.d("tag", artist);
 
         URL url = null;
         try {
@@ -31,7 +31,6 @@ public class HttpRequestHelper2 {
             e.printStackTrace();
         }
 
-        http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=3f730f7100c7cbfef7e1b9145c6c6ccb&artist=cher&track=believe&format=json
         assert url != null;
         Log.d("url", url.toString());
 

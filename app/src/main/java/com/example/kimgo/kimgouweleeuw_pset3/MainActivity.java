@@ -17,36 +17,38 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTrack;
+    MainActivity mainAct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         mainAct = this;
 
         editTrack = (EditText) findViewById(R.id.editTrack);
         assert editTrack != null;
         editTrack.setHint("Search");
 
-//        findViewById(R.id.button2).setOnClickListener(new trackSearch());
+        findViewById(R.id.search).setOnClickListener(new trackSearch());
     }
 
-    public void trackSearch(View view) {
-        String trackSearch = editTrack.getText().toString();
-        TrackAsyncTask asyncTask = new TrackAsyncTask(this);
-        asyncTask.execute(trackSearch);
-
-        editTrack.getText().clear();
-    }
-
-//    public class trackSearch implements View.OnClickListener {
-//        @Override public void onClick(View view) {
-//            String trackSearch = editTrack.getText().toString();
-//            TrackAsyncTask asyncTask = new TrackAsyncTask(this);
-//            asyncTask.execute(trackSearch);
+//    public void trackSearch(View view) {
+//        String trackSearch = editTrack.getText().toString();
+//        TrackAsyncTask asyncTask = new TrackAsyncTask(this);
+//        asyncTask.execute(trackSearch);
 //
-//            editTrack.getText().clear();
-//        }
+//        editTrack.getText().clear();
 //    }
+
+    public class trackSearch implements View.OnClickListener {
+        @Override public void onClick(View view) {
+            String trackSearch = editTrack.getText().toString();
+            TrackAsyncTask asyncTask = new TrackAsyncTask(mainAct);
+            asyncTask.execute(trackSearch);
+
+            editTrack.getText().clear();
+        }
+    }
 
     public void trackStartIntent(ArrayList<String> trackData) {
         Log.d("hallo", "hallo2");

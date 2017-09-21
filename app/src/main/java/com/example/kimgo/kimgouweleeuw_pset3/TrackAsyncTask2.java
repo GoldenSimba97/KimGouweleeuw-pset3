@@ -38,20 +38,24 @@ public class TrackAsyncTask2 extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         ArrayList<String> list = new ArrayList<>();
+        Log.d("hello", "hello");
 
         try {
             JSONObject trackStreamObj = new JSONObject(result);
             JSONObject trackObj = trackStreamObj.getJSONObject("track");
 //            Log.d("length2", resultObj.toString());
             String name = trackObj.getString("name");
-            String artist = trackObj.getString("artist");
+
+            JSONObject artistObj = trackObj.getJSONObject("artist");
+            String artist = artistObj.getString("name");
 
             JSONObject albumObj = trackObj.getJSONObject("album");
             String albumTitle = albumObj.getString("title");
-
+            Log.d("hello", albumTitle);
             JSONObject toptagsObj = trackObj.getJSONObject("toptags");
-            JSONArray tagsObj = toptagsObj.getJSONArray("tags");
-//            Log.d("length", num);
+            JSONArray tagsObj = toptagsObj.getJSONArray("tag");
+            Integer len = tagsObj.length();
+            Log.d("length", len.toString());
             StringBuilder string = new StringBuilder();
             String genre = "";
             for (int i = 1; i < tagsObj.length(); ++i) {
@@ -67,6 +71,7 @@ public class TrackAsyncTask2 extends AsyncTask<String, Integer, String> {
             JSONObject wikiObj = trackObj.getJSONObject("wiki");
             String summary = wikiObj.getString("summary");
 
+            list.add(name + " - " + artist);
             list.add(name);
             list.add(artist);
             list.add(albumTitle);

@@ -3,6 +3,7 @@ package com.example.kimgo.kimgouweleeuw_pset3;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,12 +30,15 @@ public class InformationActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         ArrayList<String> trackArray = (ArrayList<String>) extras.getSerializable("track");
 
+//        Log.d("array", trackArray.toString());
         assert trackArray != null;
-        trackProduct.setText(trackArray.get(0));
-        artistProduct.setText(trackArray.get(1));
-        albumProduct.setText(trackArray.get(2));
-        genresProduct.setText(trackArray.get(3));
-        summaryProduct.setText(trackArray.get(4));
+        trackProduct.setText(trackArray.get(1));
+        artistProduct.setText(trackArray.get(2));
+        albumProduct.setText(trackArray.get(3));
+        genresProduct.setText(trackArray.get(4));
+        summaryProduct.setText(trackArray.get(5));
+
+        ArrayList<String> listenArray = new ArrayList<>();
 
 //        findViewById(R.id.addToList).setOnClickListener(new addToListenList());
     }

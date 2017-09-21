@@ -22,6 +22,7 @@ public class DataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
+        final DataActivity dataAct = this;
 
         tvResult = (TextView) findViewById(R.id.tvFound);
         lvItems = (ListView) findViewById(R.id.listViewID);
@@ -40,7 +41,7 @@ public class DataActivity extends AppCompatActivity {
 
                 String track = ((TextView) view).getText().toString();
 
-                TrackAsyncTask2 asyncTask = new TrackAsyncTask2(this);
+                TrackAsyncTask2 asyncTask = new TrackAsyncTask2(dataAct);
                 asyncTask.execute(track);
 
 

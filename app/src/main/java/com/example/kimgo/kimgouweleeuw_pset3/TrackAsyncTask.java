@@ -46,6 +46,8 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
             JSONObject trackMatchesObj = resultObj.getJSONObject("trackmatches");
             JSONArray trackObj = trackMatchesObj.getJSONArray("track");
 //            Log.d("length", num);
+            Integer len = trackObj.length();
+            Log.d("length", len.toString());
             for (int i = 0; i < trackObj.length(); ++i) {
                 JSONObject track = trackObj.getJSONObject(i);
                 String name = track.getString("name");
