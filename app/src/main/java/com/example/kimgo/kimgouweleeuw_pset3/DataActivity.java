@@ -51,7 +51,7 @@ public class DataActivity extends AppCompatActivity {
     }
 
     public void trackStartIntent2(ArrayList<String> track) {
-//        Log.d("hallo", "hallo2");
+        Log.d("hallo", track.toString());
         Intent intent = new Intent(getApplicationContext(), InformationActivity.class);
         intent.putExtra("track", track);
         this.startActivity(intent);

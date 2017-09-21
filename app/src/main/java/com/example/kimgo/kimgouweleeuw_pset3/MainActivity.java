@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTrack;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         editTrack.setHint("Search");
 
         findViewById(R.id.search).setOnClickListener(new trackSearch());
+        findViewById(R.id.goToListen).setOnClickListener(new goToListenList());
     }
 
 //    public void trackSearch(View view) {
@@ -69,11 +71,24 @@ public class MainActivity extends AppCompatActivity {
 //
 //    public void loadFromSharedPrefs() {
 //        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+//        Set<String> set = prefs.getStringSet("listenlist", null);
+//
+//
 //
 //        String editTextValueRestored = prefs.getString("editTrack", null);
 //
 //        if (editTextValueRestored != null) {
 //            editTrack.setText(editTextValueRestored);
+//        }
+//    }
+//
+//    public class goToListenList implements View.OnClickListener {
+//        @Override public void onClick(View view) {
+//
+//            Intent intent = new Intent(view.getContext(), ListActivity.class);
+//            intent.putExtra("listen", listenArray);
+//            startActivity(intent);
+//            finish();
 //        }
 //    }
 

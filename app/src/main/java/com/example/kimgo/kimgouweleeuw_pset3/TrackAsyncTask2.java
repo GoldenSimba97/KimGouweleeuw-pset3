@@ -38,7 +38,7 @@ public class TrackAsyncTask2 extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         ArrayList<String> list = new ArrayList<>();
-        Log.d("hello", "hello");
+        Log.d("hello", result);
 
         try {
             JSONObject trackStreamObj = new JSONObject(result);
@@ -79,7 +79,9 @@ public class TrackAsyncTask2 extends AsyncTask<String, Integer, String> {
             list.add(summary);
         } catch (JSONException e1) {
             e1.printStackTrace();
+            Log.d("dead", "dead");
         }
+        Log.d("list", list.toString());
         this.dataAct.trackStartIntent2(list);
     }
 

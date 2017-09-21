@@ -22,14 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button"/>
-        <!--android:onClick="trackSearch"/>-->
 
-    <!--<Button-->
-        <!--android:id="@+id/button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Button"-->
-        <!--android:onClick="saveToSharedPrefs"/>-->
+    <Button
+        android:id="@+id/goToListen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 
 </LinearLayout>

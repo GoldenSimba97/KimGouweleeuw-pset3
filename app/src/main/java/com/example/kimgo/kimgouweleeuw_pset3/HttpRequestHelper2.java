@@ -18,6 +18,7 @@ public class HttpRequestHelper2 {
     protected static synchronized String downloadFromServer(String... params) {
         String result = "";
         String chosenTag = params[0];
+//        chosenTag.replaceAll("\\s+","");
         String[] split = chosenTag.split(" - ");
         String track = split[0];
         String artist = split[1];
