@@ -1,16 +1,15 @@
 package com.example.kimgo.kimgouweleeuw_pset3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,19 +32,10 @@ public class ListActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         track = (String) extras.getSerializable("listen");
 
-//        Bundle extras2 = getIntent().getExtras();
-//        listenArray = (ArrayList<String>) extras2.getSerializable("tracks");
-
         assert track != null;
         if (!track.equals("Main") && !track.equals("Delete")) {
             listenArray.add(track);
         }
-
-
-
-        Log.d("array", listenArray.toString());
-
-//        saveToSharedPrefs();
 
         makeTrackAdapter2();
 
@@ -54,15 +44,11 @@ public class ListActivity extends AppCompatActivity {
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
                 String track = ((TextView) view).getText().toString();
-
                 Intent intent = new Intent(view.getContext(), DeleteActivity.class);
                 intent.putExtra("delete", track);
                 startActivity(intent);
                 finish();
-
-
             }
         });
 
@@ -76,38 +62,26 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void saveToSharedPrefs() {
-//        String editTextValue = editTrack.getText().toString();
-
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("settings", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-//        Log.d("list", "hello");
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
         assert listenArray != null;
         set.addAll(listenArray);
         editor.putStringSet("listenlist", set);
-        editor.commit();
-
-//        editor.putString("editTrack", editTextValue);
-//        editor.commit();
+        editor.apply();
     }
 
     public void loadFromSharedPrefs() {
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("settings", MODE_PRIVATE);
         Set<String> set = prefs.getStringSet("listenlist", null);
         assert set != null;
         listenArray = new ArrayList<>(set);
-
-//        String editTextValueRestored = prefs.getString("editTrack", null);
-
-//        if (list != null) {
-//            editTrack.setText(editTextValueRestored);
-//        }
     }
 
     public void makeTrackAdapter2() {
         if (listenArray != null) {
-            ArrayAdapter arrayAdapter = new ArrayAdapter<String>
+            ArrayAdapter arrayAdapter = new ArrayAdapter<>
                     (this, android.R.layout.simple_list_item_1, listenArray);
             lvItems = (ListView) findViewById(R.id.listViewID);
             assert lvItems != null;
@@ -115,10 +89,9 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
-    public class backToMain implements View.OnClickListener {
+    private class backToMain implements View.OnClickListener {
         @Override public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), MainActivity.class);
-//            intent.putExtra("listen", track);
             startActivity(intent);
             finish();
         }

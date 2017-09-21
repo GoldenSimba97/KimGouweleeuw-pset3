@@ -2,7 +2,6 @@ package com.example.kimgo.kimgouweleeuw_pset3;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -12,14 +11,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by kimgo on 19-9-2017.
+ * TrackAsyncTask created by kimgo on 19-9-2017.
  */
 
-public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
-    Context context;
-    MainActivity mainAct;
+class TrackAsyncTask extends AsyncTask<String, Integer, String> {
+    private Context context;
+    private MainActivity mainAct;
 
-    public TrackAsyncTask(MainActivity main) {
+    TrackAsyncTask(MainActivity main) {
         this.mainAct = main;
         this.context = this.mainAct.getApplicationContext();
     }
@@ -42,18 +41,13 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
         try {
             JSONObject trackStreamObj = new JSONObject(result);
             JSONObject resultObj = trackStreamObj.getJSONObject("results");
-            Log.d("length2", resultObj.toString());
             JSONObject trackMatchesObj = resultObj.getJSONObject("trackmatches");
             JSONArray trackObj = trackMatchesObj.getJSONArray("track");
-//            Log.d("length", num);
-            Integer len = trackObj.length();
-            Log.d("length", len.toString());
             for (int i = 0; i < trackObj.length(); ++i) {
                 JSONObject track = trackObj.getJSONObject(i);
                 String name = track.getString("name");
                 String artist = track.getString("artist");
                 list.add(name + " - " + artist);
-//                list.add(artist);
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,11 +1,11 @@
 package com.example.kimgo.kimgouweleeuw_pset3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,14 +37,11 @@ public class DeleteActivity extends AppCompatActivity {
         findViewById(R.id.delete).setOnClickListener(new deleteTrack());
     }
 
-    public class deleteTrack implements View.OnClickListener {
+    private class deleteTrack implements View.OnClickListener {
         @Override public void onClick(View view) {
             Intent intent = new Intent(view.getContext(), ListActivity.class);
             listenArray.remove(track);
-//            listenArray.remove("Delete");
-//            listenArray.remove("Main");
             saveToSharedPrefs();
-            Log.d("delete", listenArray.toString());
             intent.putExtra("listen", "Delete");
             startActivity(intent);
             finish();
@@ -58,32 +55,20 @@ public class DeleteActivity extends AppCompatActivity {
     }
 
     public void saveToSharedPrefs() {
-//        String editTextValue = editTrack.getText().toString();
-
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("settings", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-//        Log.d("list", "hello");
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
         assert listenArray != null;
         set.addAll(listenArray);
         editor.putStringSet("listenlist", set);
-        editor.commit();
-
-//        editor.putString("editTrack", editTextValue);
-//        editor.commit();
+        editor.apply();
     }
 
     public void loadFromSharedPrefs() {
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("settings", MODE_PRIVATE);
         Set<String> set = prefs.getStringSet("listenlist", null);
         assert set != null;
         listenArray = new ArrayList<>(set);
-
-//        String editTextValueRestored = prefs.getString("editTrack", null);
-
-//        if (list != null) {
-//            editTrack.setText(editTextValueRestored);
-//        }
     }
 }

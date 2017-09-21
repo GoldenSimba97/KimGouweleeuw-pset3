@@ -1,7 +1,5 @@
 package com.example.kimgo.kimgouweleeuw_pset3;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,17 +8,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by kimgo on 19-9-2017.
+ * HttpRequestHelper created by kimgo on 19-9-2017.
  */
 
-public class HttpRequestHelper {
+class HttpRequestHelper {
 
-    protected static synchronized String downloadFromServer(String... params) {
+    static synchronized String downloadFromServer(String... params) {
         String result = "";
         String chosenTag = params[0];
-//        chosenTag = chosenTag.replaceAll("[^A-Za-z]+", "");
-
-//        Log.d("tag", chosenTag);
 
         URL url = null;
         URL url2 = null;
@@ -31,15 +26,11 @@ public class HttpRequestHelper {
             e.printStackTrace();
         }
 
-        assert url != null;
-        Log.d("url", url.toString());
-
         HttpURLConnection connect;
 
         if (url != null) {
             try {
                 connect = (HttpURLConnection) url.openConnection();
-
                 connect.setRequestMethod("GET");
 
                 Integer responseCode = connect.getResponseCode();
