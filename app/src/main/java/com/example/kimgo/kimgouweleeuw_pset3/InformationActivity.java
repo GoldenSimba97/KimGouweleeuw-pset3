@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class InformationActivity extends AppCompatActivity {
 
     @Override
@@ -13,13 +15,26 @@ public class InformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
 
-        TextView txtProduct = (TextView) findViewById(R.id.trackView);
+        TextView trackProduct = (TextView) findViewById(R.id.trackView);
+        TextView artistProduct = (TextView) findViewById(R.id.artistView);
+        TextView albumProduct = (TextView) findViewById(R.id.albumView);
+        TextView genresProduct = (TextView) findViewById(R.id.genresView);
+        TextView summaryProduct = (TextView) findViewById(R.id.summaryView);
 
-        Intent i = getIntent();
-        // getting attached intent data
-        String product = i.getStringExtra("track");
-        // displaying selected product name
-        txtProduct.setText(product);
+
+//        Intent i = getIntent();
+//        // getting attached intent data
+//        String product = i.getStringExtra("track");
+
+        Bundle extras = getIntent().getExtras();
+        ArrayList<String> trackArray = (ArrayList<String>) extras.getSerializable("track");
+
+        assert trackArray != null;
+        trackProduct.setText(trackArray.get(0));
+        artistProduct.setText(trackArray.get(1));
+        albumProduct.setText(trackArray.get(2));
+        genresProduct.setText(trackArray.get(3));
+        summaryProduct.setText(trackArray.get(4));
 
 //        findViewById(R.id.addToList).setOnClickListener(new addToListenList());
     }
@@ -32,4 +47,6 @@ public class InformationActivity extends AppCompatActivity {
 ////            finish();
 //        }
 //    }
+
+
 }

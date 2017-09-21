@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,18 +38,22 @@ public class DataActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                // selected item
                 String track = ((TextView) view).getText().toString();
 
-                // Launching new Activity on selecting single List Item
-                Intent intent = new Intent(getApplicationContext(), InformationActivity.class);
-                // sending data to new activity
-                intent.putExtra("track", track);
-                startActivity(intent);
+                TrackAsyncTask2 asyncTask = new TrackAsyncTask2(this);
+                asyncTask.execute(track);
+
+
 
             }
         });
+    }
 
+    public void trackStartIntent2(ArrayList<String> track) {
+//        Log.d("hallo", "hallo2");
+        Intent intent = new Intent(getApplicationContext(), InformationActivity.class);
+        intent.putExtra("track", track);
+        this.startActivity(intent);
     }
 
     public void makeTrackAdapter() {

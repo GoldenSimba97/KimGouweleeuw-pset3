@@ -5,20 +5,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.kimgo.kimgouweleeuw_pset3.InformationActivity">
 
     <TextView
         android:id="@+id/trackView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-1dp" />
+        android:text="" />
+
+    <TextView
+        android:id="@+id/artistView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/albumView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/genresView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/summaryView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
 
     <Button
-        android:id="@+id/addToList"
-        android:layout_width="wrap_content"
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="Button" />
 </LinearLayout>
